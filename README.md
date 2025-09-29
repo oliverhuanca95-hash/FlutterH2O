@@ -1,7 +1,7 @@
-# flutterh2o - Servicio Técnico Informático Especializado
+# flutterh2o - Servicio Técnico  Especializado
 
 ## Descripción
-Este proyecto es una página web profesional para flutterh2o, diseñada para ofrecer servicios técnicos informáticos especializados. Incluye:
+Este proyecto es una página web profesional para flutterh2o, diseñada para ofrecer servicios técnicos especializados. Incluye:
 
 - **Formulario de contacto**: Para recibir comentarios de los clientes.
 - **Galería de imágenes**: Muestra trabajos realizados.
