@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RINO.NET - ¡Tu Solución Técnica con Vida!</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css" />
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <style>
+    :root{
+      --brand: #16a34a; /* verde */
+      --brand-600:#16a34a; --brand-700:#15803d; --brand-300:#86efac;
+      --ink:#0f172a; --muted:#475569; --surface:#0b1220; --ring:rgba(22,163,74,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+
+    /* Navbar moderna */
+    .navbar{ --bs-navbar-padding-y: .15rem; backdrop-filter: saturate(120%) blur(6px); }
+    .navbar-brand img{ height: 36px; width:auto; }
+    .btn-cta{ background: linear-gradient(135deg,var(--brand-600), var(--brand-700)); color:#fff; border:0; }
+    .btn-cta:hover{ filter: brightness(1.05); box-shadow: 0 8px 24px var(--ring); }
+
+    /* Hero */
+    .hero{ position: relative; padding-top: 6rem; padding-bottom: 3rem; background: radial-gradient(1200px 600px at 20% -10%, rgba(22,163,74,.12), transparent), linear-gradient(#fff, #f8fafc); }
+    .hero h1{ letter-spacing:.2px; }
+    .hero-badge{ background: #ecfdf5; color: var(--brand-700); border: 1px solid #d1fae5; font-weight: 600; }
+    .glass{ background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.6); box-shadow: 0 10px 30px rgba(2,6,23,.08); backdrop-filter: blur(8px); border-radius: 16px; }
+
+    /* Secciones */
+    section{ scroll-margin-top: 84px; }
+    .section-title{ font-weight: 800; color: var(--ink); }
+    .text-muted{ color: var(--muted) !important; }
+
+    /* Tarjetas de servicio */
+    .service-card{ transition: transform .25s ease, box-shadow .25s ease; border:1px solid #e2e8f0; }
+    .service-card:hover{ transform: translateY(-4px); box-shadow: 0 12px 28px rgba(2,6,23,.08); }
+
+    /* Galería */
+    .gallery-item{ border-radius:16px; overflow:hidden; position:relative; }
+    .gallery-item img{ display:block; width:100%; height:260px; object-fit:cover; }
+    .gallery-item .overlay{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .25s ease; background:linear-gradient(to top, rgba(2,6,23,.55), transparent 60%); color:#fff; font-weight:700; letter-spacing:.5px; }
+    .gallery-item:hover .overlay{ opacity:1; }
+
+    /* Mapa */
+    .map-container{ border-radius:16px; overflow:hidden; border:1px solid #e2e8f0; }
+
+    /* Footer */
+    footer{ background:#0b1220; color:#cbd5e1; }
+
+    /* Modo oscuro automático */
+    @media (prefers-color-scheme: dark){
+      body{ color:#e2e8f0; background:#0b1220; }
+      .hero{ background: radial-gradient(1200px 600px at 20% -10%, rgba(22,163,74,.12), rgba(22,163,74,.04)), linear-gradient(#0b1220, #0b1220); }
+      .glass{ background: rgba(15,23,42,.55); border-color: rgba(148,163,184,.15); }
+      .section-title{ color:#e2e8f0; }
+      .service-card{ background:#0f172a; border-color:#1e293b; }
+      .map-container{ border-color:#1e293b; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top bg-white border-bottom" id="topNav">
+    <div class="container">
+      <!-- LOGO: reemplaza img/logo.svg por tu archivo -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio" aria-label="FlutterH2O inicio">
+        <img src="img/logoFlutterH2O.png" alt="FlutterH2O" onerror="this.src='img/nombre.png'">
+        <img src="img/nombre.png" alt="FlutterH2O" onerror="this.src='img/nombre.png'">
+        
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavLabel">Menú</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#inicio">INICIO</a></li>
+            <li class="nav-item"><a class="nav-link" href="#nosotros">NOSOTROS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#servicios">SISTEMA</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portafolio">GALERIA</a></li>
+            <li class="nav-item"><a class="nav-link" href="#soporte">SOPORTE</a></li>
+            <li class="nav-item"><a class="nav-link" href="#blog">BLOG</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">CONTACTACTOS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#ubicacion">UBICACION</a></li>
+
+          
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a class="badge bg-success-subtle text-success rounded-pill px-3 py-2 text-decoration-none" href="#">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section - Con animación y energía -->
+  <section id="inicio" class="hero-section">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-center g-0">
+        <!-- Columna Izquierda: Texto -->
+        <div class="col-lg-6 text-center text-lg-start px-4 py-5">
+          <h1 class="display-6 fw-bold mb-3 animate__animated animate__fadeInLeft text-center">💚 FlutterH₂O: "RIEGO URBANO INTELIGENTE QUE
+            TRANSFORMA CIUDADES CON CONTROL TOTAL DESDE TU
+            APLICACIÓN MÓVIL, SIN FRONTERAS" 💧</h1>
+          <p class="texto-justificado lead text-muted mb-4 animate__animated animate__fadeInLeft animate__delay-1s">
+            FlutterH₂O es una propuesta tecnológica integral que optimiza el riego urbano mediante la automatización del cuidado
+            de las plantas, combinando sensores ambientales y control a través de una aplicación móvil. ¡Desde cualquier lugar!
+          </p>
+          <a href="#contacto" class="btn btn-success btn-lg rounded-pill px-4 shadow animate__animated animate__fadeInLeft animate__delay-2s">
+            Contáctanos Ahora →
+          </a>
+        </div>
+
+        <!-- Columna Derecha: Imagen/Icono Animado -->
+        <div class="col-lg-6 d-flex justify-content-center">
+          <div class="hero-image-container">
+            <img src="img/premio.png"  alt="PREMIO"width="150" height="150" class="img-fluid hero-image animate__animated animate__zoomIn " />
+          
+            <img src="img/logo.png"  alt="PREMIO"width="300" height="300" class="img-fluid hero-image animate__animated animate__zoomIn rounded-circle" />
+            
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="py-5">
+    <div class="container">
+      <h2 class="section-title display-6 fw-bold text-center mb-4">¿Quiénes somos?</h2>
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <picture>
+            <source srcset="img/fotoFeria.jpg" type="image/webp">
+            <img src="img/fotoFeria.jpg" class="img-fluid rounded shadow" alt="Equipo FlutterH2O" loading="lazy">
+          </picture>
+        </div>
+        <div class="col-md-6">
+          <p class="texto-justificado fs-5 text-muted"><strong>Misión:</strong> "Desarrollar soluciones tecnológicas accesibles y sostenibles que optimicen el manejo
+del recurso hídrico en la agricultura urbana, mediante sistemas de riego inteligente controlados
+desde dispositivos móviles. Nuestro compromiso es democratizar el acceso a la automatización,
+mejorar la calidad de vida en entornos urbanos y fomentar prácticas responsables con el medio
+ambiente, contribuyendo así a la seguridad alimentaria y a la conservación de los recursos
+naturales en Bolivia."</p>
+          <div class="d-flex gap-2 flex-wrap mt-3">
+            <span class="badge text-bg-success">Garantía 100%</span>
+            <span class="badge text-bg-info">Soporte 24/7</span>
+            <span class="badge text-bg-warning">Innovación</span>
+          </div>
+        </div>
+      </div>
+      <hr class="my-5"/>
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6 order-md-2">
+          <picture>
+            <source srcset="img/fotoFeria2.jpeg" type="image/webp">
+            <img src="img/fotoFeria2.jpeg" class="img-fluid rounded shadow" alt="Equipo en feria" loading="lazy">
+          </picture>
+        </div>
+        <div class="col-md-6">
+          <p class=" texto-justificado fs-5 text-muted"><strong>Visión:</strong> "Convertirnos en líderes en innovación tecnológica aplicada a la agricultura urbana en
+Bolivia, siendo reconocidos por ofrecer sistemas de riego inteligente que integran eficiencia,
+bajo costo y facilidad de uso. Aspiramos a expandir nuestra presencia a regiones con escasez 
+hídrica, consolidándonos como un referente de sostenibilidad y tecnología al servicio de las
+comunidades."  </p>
+          <div class="d-flex gap-2 flex-wrap mt-3">
+            <span class="badge text-bg-success">Sostenible</span>
+            <span class="badge text-bg-secondary">Escalable</span>
+            <span class="badge text-bg-primary">IoT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="py-5 bg-lightbg-opacity-75">
+    <div class="container bg-opacity-75">
+      <h2 class="section-title display-6 fw-bold text-center mb-4">Nuestro sistema inteligente</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card service-card h-100">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-success-subtle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px"><i class="bi bi-droplet fs-3 text-success"></i></div>
+              <h5>Sensores de humedad</h5>
+              <p class="text-muted">Monitoreo en tiempo real para regar solo cuando es necesario.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card h-100">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-primary-subtle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px"><i class="bi bi-wifi fs-3 text-primary"></i></div>
+              <h5>Conectividad IoT</h5>
+              <p class="text-muted">Control inalámbrico desde tu smartphone, estés donde estés.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card h-100">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-warning-subtle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px"><i class="bi bi-cloud-rain fs-3 text-warning"></i></div>
+              <h5>Riego automatizado</h5>
+              <p class="text-muted">Relés controlados por microcontroladores para precisión y eficiencia.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card h-100">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-danger-subtle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px"><i class="bi bi-cloud-sun fs-3 text-danger"></i></div>
+              <h5>Pronóstico del clima</h5>
+              <p class="text-muted">Ajustes automáticos según condiciones meteorológicas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card h-100">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-info-subtle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px"><i class="bi bi-phone fs-3 text-info"></i></div>
+              <h5>Control móvil</h5>
+              <p class="text-muted">Programa horarios y recibe alertas en tiempo real.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card h-100">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-success-subtle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px"><i class="bi bi-chat-dots fs-3 text-success"></i></div>
+              <h5>Soporte técnico</h5>
+              <p class="text-muted">Atención remota rápida y segura cuando lo necesites.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAFOLIO / GALERÍA -->
+  <section id="portafolio" class="py-5">
+    <div class="container">
+      <h2 class="section-title display-6 fw-bold text-center mb-4">Galería de trabajos</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="img/inicios.jpeg" alt="Inicios" loading="lazy">
+            <div class="overlay">Inicios</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="img/kit.jpeg" alt="Kit" loading="lazy">
+            <div class="overlay">Kit</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="img/image.png" alt="App móvil" loading="lazy">
+            <div class="overlay">Logros</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section id="portafolio" class="py-5">
+    <div class="container">
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="img/fotoferia3.png" alt="Inicios" loading="lazy">
+            <div class="overlay">Instalacion</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="img/kit.jpeg" alt="Kit" loading="lazy">
+            <div class="overlay">Kit</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-item">
+            <img src="img/image.png" alt="App móvil" loading="lazy">
+            <div class="overlay">Logros</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOPORTE -->
+  <section id="soporte" class="py-5 bg-success bg-opacity-25">
+    <div class="container">
+      <h2 class="section-title display-6 fw-bold text-center mb-4">Soporte técnico</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 service-card">
+            <div class="card-body text-center p-4">
+              <i class="bi bi-telephone fs-1 text-success"></i>
+              <h5 class="mt-2">Teléfono</h5>
+              <p class="text-muted">Llama al <strong>73265463</strong> para asistencia inmediata.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 service-card">
+            <div class="card-body text-center p-4">
+              <i class="bi bi-laptop fs-1 text-primary"></i>
+              <h5 class="mt-2">Soporte remoto</h5>
+              <p class="text-muted">Consultas 24/7 con acceso remoto seguro.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 service-card">
+            <div class="card-body text-center p-4">
+              <i class="bi bi-envelope fs-1 text-warning"></i>
+              <h5 class="mt-2">Correo</h5>
+              <p class="text-muted">Escríbenos a <strong>flutterh2o.HM@gmail.com</strong>. Respondemos en menos de 24 h.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="py-5">
+    <div class="container">
+      <h2 class="section-title display-6 fw-bold text-center mb-4">Blog tecnológico</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 service-card">
+            <img src="img/feriafoto4.png" class="card-img-top" alt="Impacto social" loading="lazy"/>
+            <div class="card-body">
+              <h5 class="card-title">Impacto social</h5>
+              <ul class="mb-0 text-muted">
+                <li>Espacios verdes saludables: aire más limpio y bienestar.</li>
+                <li>Acceso a automatización para más personas.</li>
+                <li>Menos desperdicio de agua potable.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 service-card">
+            <img src="img/feriafoto5.png" class="card-img-top" alt="Impacto educativo" loading="lazy"/>
+            <div class="card-body">
+              <h5 class="card-title">Impacto educativo</h5>
+              <p class="text-muted mb-2">Proyecto replicable en:</p>
+              <ul class="text-muted">
+                <li>Ingeniería electrónica</li>
+                <li>Desarrollo de software</li>
+                <li>Agroecología</li>
+              </ul>
+              <p class="text-muted mb-0">Se aprende microcontroladores, automatización, apps móviles e integración IoT.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-5 bg-info bg-opacity-25">
+    <div class="container">
+      <h2 class="section-title display-6 fw-bold text-center mb-4">Contáctanos</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <form class="row g-3" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
+            <div class="col-12"><input type="text" class="form-control form-control-lg" placeholder="Nombre" required></div>
+            <div class="col-12"><input type="email" class="form-control form-control-lg" placeholder="Correo electrónico" required></div>
+            <div class="col-12"><textarea rows="5" class="form-control form-control-lg" placeholder="Mensaje" required></textarea></div>
+            <div class="col-12"><button class="btn btn-cta btn-lg w-100" type="submit">Enviar mensaje</button></div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="glass p-4 h-100">
+            <h5 class="mb-3">📍 Información de contacto</h5>
+            <p class="mb-1"><strong>Teléfono:</strong> 73265463 – 76556395</p>
+            <p class="mb-1"><strong>Email:</strong> flutterh2o.HM@gmail.com</p>
+            <p class="mb-0"><strong>Dirección:</strong> Zona P.D. Murillo, Calle Macario Pinilla N° 0925</p>
+            <div class="mt-3 d-flex gap-2">
+              <a href="https://wa.me/59173265463" target="_blank" class="btn btn-success"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a>
+              <a href="https://www.facebook.com/share/19pATYRbcW/?mibextid=wwXIfr" target="_blank" class="btn btn-primary"><i class="bi bi-facebook me-1"></i> Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section id="ubicacion" class="py-5">
+    <div class="container">
+      <h2 class="section-title display-6 fw-bold text-center mb-4">Nuestra ubicación</h2>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d338.120769683179!2d-68.20357713259635!3d-16.505900538911188!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1759129964734!5m2!1ses!2sbo" width="100%" height="420" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <p class="text-center text-muted mt-3">¡Te esperamos para ayudarte en persona!</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4 mt-auto">
+    <div class="container text-center">
+      <p class="mb-0">&copy; <span id="year"></span> FlutterH2O — Todos los derechos reservados.</p>
+      <small class="text-secondary">Diseñado con 💚 en Bolivia.</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+  <!-- Contact Form JS -->
+  <script src="js/contact-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+/* === FONDOS Y COLORES === */
+.bg-gradient-green {
+  background: linear-gradient(90deg, #004d40, #006400);
+}
+
+.hero-section {
+  min-height: 70vh; /* no ocupa toda la pantalla */
+  background: url('../img/8.jpeg') no-repeat center center;
+  background-size: cover; /* ajusta bien la imagen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem; /* menos espacio interno */
+}
+
+/* 🔥 Estilos solo para el H1 dentro de hero-section */
+.hero-section h1 {
+  color: white; /* letras blancas */
+  font-weight: bold; /* negrita */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* sombra elegante */
+}
+
+.hero-section p {
+  color: white !important;
+  text-shadow: 
+    2px 2px 6px rgba(0, 0, 0, 0.9),   /* sombra principal fuerte */
+    0 0 8px rgba(0, 0, 0, 0.8),       /* halo alrededor */
+    0 0 15px rgba(0, 0, 0, 0.7);      /* difuminado extra */
+}
+
+.logo {
+  width: 180px;          /* más grande */
+  height: 180px;         /* mismo alto/ancho para que sea circular */
+  border-radius: 50%;    /* lo hace circular */
+  object-fit: cover;     /* recorta la imagen sin deformarla */
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.6),   /* sombra oscura */
+    0 0 20px rgba(0, 255, 255, 0.7); /* brillo tipo glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 🔥 Efecto al pasar el mouse */
+.logo:hover {
+  transform: scale(1.1); /* se agranda suavemente */
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(0, 255, 255, 0.9);
+}
+
+
+
+/* === TARJETAS DE SERVICIOS === */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  font-size: 24px;
+}
+
+/* === GALERÍA === */
+.gallery-item {
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item .overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+/* === ICONOS CIRCULARES === */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 1rem;
+}
+
+/* === MAPA === */
+.map-container {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* === BOTONES SOCIALES === */
+.btn-success {
+  background: #004d40 !important;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #006400 !important;
+}
+
+/* === TIPOGRAFÍA === */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+}
+
+.text-success {
+  color: #004d40 !important;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 4rem 1rem;
+  }
+  .service-card {
+    margin-bottom: 1rem;
+  }
+  .gallery-item {
+    margin-bottom: 1rem;
+  }
+}
+body {
+  font-family: system-ui,;
+  background: url('../img/fondo_flutter1.png') no-repeat center center fixed;
+  background-size: cover;
+}
+.texto-justificado {
+  text-align: justify;
+}
+/* ===== FIX OFFCANVAS SÓLIDO, POR ENCIMA Y A PANTALLA COMPLETA ===== */
+#offcanvasNav {
+  background: #fff !important;        /* sin transparencia */
+  z-index: 1065 !important;            /* por encima del navbar/backdrop */
+  width: min(360px, 92vw) !important;  /* ancho cómodo en móvil */
+  height: 100vh !important;            /* alto pantalla completa */
+  top: 0 !important;                   /* que no quede “bajo” el navbar */
+  box-shadow: -10px 0 28px rgba(2,6,23,.20) !important;
+  overflow-y: auto !important;         /* si se llena, que desplace */
+}
+
+/* Encabezado del offcanvas limpio y compacto */
+#offcanvasNav .offcanvas-header{
+  padding: .85rem 1rem !important;
+  border-bottom: 1px solid rgba(15,23,42,.08) !important;
+}
+#offcanvasNav .offcanvas-title{
+  margin: 0 !important;
+  font-weight: 800 !important;
+  font-size: 1.25rem !important;
+}
+
+/* Enlaces dentro del panel: táctiles */
+#offcanvasNav .nav-link{
+  padding: .9rem 1rem !important;
+  margin: .1rem 0 !important;
+  border-radius: .6rem !important;
+  font-size: 1.05rem !important;
+}
+#offcanvasNav .nav-link:active{ background: rgba(21,128,61,.12) !important; }
+
+/* Badge de Login coherente con tu paleta */
+#offcanvasNav .nav-item .badge{
+  display: inline-flex !important; align-items: center !important; gap: .35rem !important;
+  background: rgba(22,163,74,.12) !important;
+  color: #15803d !important;
+  border: 1px solid rgba(22,163,74,.25) !important;
+}
+
+/* Backdrop más oscuro para que NO se lea el fondo */
+.offcanvas-backdrop.show{
+  background-color: #0b1220 !important;
+  opacity: .55 !important;
+  z-index: 1060 !important;            /* debajo del panel, encima del contenido */
+}
+
+/* Evita scroll de la página cuando el menú está abierto (Bootstrap añade .offcanvas-open al body) */
+body.offcanvas-open{ overflow: hidden !important; }
+
+/* Botón hamburguesa visible sobre fondo blanco */
+#topNav .navbar-toggler{
+  border: 1px solid rgba(15,23,42,.15) !important;
+}
+#topNav .navbar-toggler:focus{ box-shadow: 0 0 0 .2rem rgba(22,163,74,.25) !important; }
+#topNav .navbar-toggler-icon{
+  background-image:
+    url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(15,23,42,0.9)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+/* En móviles, evita “glitch” con fondo fijo detrás del panel */
+@media (max-width: 991.98px){
+  body{ background-attachment: scroll !important; }
+}
+/***** THEME NATURE MODERNO (solo CSS, sin tocar HTML) *****/
+:root{
+  --leaf-700:#166534;  /* verde hoja oscuro */
+  --leaf-600:#16a34a;  /* verde marca */
+  --leaf-500:#22c55e;
+  --leaf-300:#86efac;
+  --leaf-100:#ecfdf5;
+  --ink-900:#0f172a;
+  --ink-700:#334155;
+  --sand-50:#f9fafb;   /* arena muy claro */
+  --ring: rgba(34,197,94,.28);
+}
+
+/* Navbar con efecto glass suave y borde orgánico */
+#topNav.navbar{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.78)) !important;
+  border-bottom:1px solid rgba(15,23,42,.06) !important;
+  box-shadow: 0 8px 24px rgba(2,6,23,.06) !important;
+  backdrop-filter: saturate(130%) blur(10px);
+}
+
+/* Marca/Logos: tamaño y respiración */
+#topNav .navbar-brand{ gap:.5rem; }
+#topNav .navbar-brand img{ height:34px; }
+
+/* Links con micro-subrayado “crece” (naturaleza = fluido) */
+#topNav .nav-link{
+  position:relative;
+  font-weight:600;
+  color:var(--ink-900);
+  padding:.55rem .8rem;
+  border-radius:.75rem;
+  transition: color .18s ease, background .18s ease;
+}
+#topNav .nav-link::after{
+  content:"";
+  position:absolute; left:.8rem; right:.8rem; bottom:.35rem;
+  height:2px; background:linear-gradient(90deg,var(--leaf-300),var(--leaf-600));
+  transform:scaleX(0); transform-origin:left;
+  transition: transform .25s ease;
+  border-radius:2px;
+}
+#topNav .nav-link:hover{ color:var(--leaf-700); background:rgba(22,163,74,.06); }
+#topNav .nav-link:hover::after{ transform:scaleX(1); }
+#topNav .nav-link.active{
+  color:#fff !important;
+  background:linear-gradient(135deg,var(--leaf-600),var(--leaf-700)) !important;
+  box-shadow:0 10px 26px var(--ring);
+}
+#topNav .nav-link.active::after{ display:none; }
+
+/* Botón Login (badge) con estilo “semilla” */
+#topNav .badge.bg-success-subtle{
+  background:linear-gradient(180deg, #f0fdf4, #dcfce7) !important;
+  color:var(--leaf-700) !important;
+  border:1px solid rgba(22,163,74,.28);
+  box-shadow:0 6px 18px rgba(34,197,94,.12);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+#topNav .badge.bg-success-subtle:hover{
+  transform: translateY(-1px);
+  box-shadow:0 10px 24px rgba(34,197,94,.18);
+}
+
+/* Toggler “hoja” visible */
+#topNav .navbar-toggler{
+  border:1px solid rgba(15,23,42,.12) !important;
+  border-radius:10px;
+  background:linear-gradient(#fff,#f8fafc);
+}
+#topNav .navbar-toggler:focus{ box-shadow:0 0 0 .2rem rgba(34,197,94,.25) !important; }
+#topNav .navbar-toggler-icon{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(22,101,52,0.95)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+/* Offcanvas con estética glass + hoja */
+#offcanvasNav{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.88)) !important;
+  border-left:1px solid rgba(15,23,42,.08) !important;
+  box-shadow:-14px 0 40px rgba(2,6,23,.18) !important;
+  backdrop-filter: blur(12px);
+}
+#offcanvasNav .offcanvas-header{
+  background:linear-gradient(180deg, var(--leaf-100), transparent);
+}
+#offcanvasNav .offcanvas-title{
+  font-weight:800; color:var(--leaf-700);
+  letter-spacing:.2px;
+}
+
+/* Items del menú: pastilla suave + icono si lo agregas después */
+#offcanvasNav .nav-link{
+  padding:1rem .9rem !important;
+  margin:.15rem 0 !important;
+  border-radius:12px !important;
+  color:var(--ink-900) !important;
+}
+#offcanvasNav .nav-link:hover{
+  background:rgba(34,197,94,.12) !important;
+  color:var(--leaf-700) !important;
+}
+
+/* Backdrop más natural (oscuro tirando a bosque) */
+.offcanvas-backdrop.show{
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(34,197,94,.18), rgba(11,18,32,.82)) !important;
+  opacity:.6 !important;
+}
+
+/* Modo oscuro del sistema (opcional y bonito) */
+@media (prefers-color-scheme: dark){
+  #topNav.navbar{
+    background:linear-gradient(180deg, rgba(15,23,42,.72), rgba(15,23,42,.65)) !important;
+    border-color: rgba(148,163,184,.14) !important;
+  }
+  #topNav .nav-link{ color:#e2e8f0; }
+  #topNav .nav-link:hover{ color:#bbf7d0; background:rgba(34,197,94,.12); }
+  #offcanvasNav{
+    background:linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.88)) !important;
+    border-left:1px solid rgba(148,163,184,.15) !important;
+  }
+  .offcanvas-backdrop.show{ opacity:.65 !important; }
+}
+
+/* Detalles: radios y sombras coherentes */
+#topNav .nav-link,
+#offcanvasNav .nav-link { box-shadow: 0 0 0 rgba(0,0,0,0); }
+#topNav .nav-link:focus-visible{ outline:2px solid var(--leaf-300); outline-offset:2px; }
+/* === OFFCANVAS -> NAV NORMAL EN ESCRITORIO (≥992px) === */
+@media (min-width: 992px){
+  /* El panel deja de ser overlay y pasa a flujo normal del navbar */
+  #offcanvasNav{
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+    background: transparent !important;
+    width: auto !important;
+    height: auto !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    z-index: auto !important;
+  }
+  /* Ocultamos el header del panel (título “Menú” y la X) */
+  #offcanvasNav .offcanvas-header{ display: none !important; }
+
+  /* Hacemos que el cuerpo del offcanvas se muestre como barra */
+  #offcanvasNav .offcanvas-body{
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+  }
+
+  /* Sin backdrop en escritorio */
+  .offcanvas-backdrop{ display: none !important; }
+
+  /* Espaciado de items en la barra desktop */
+  #topNav .navbar-nav{
+    gap: .25rem .75rem;
+  }
+  #topNav .nav-link{
+    padding: .5rem .8rem;
+  }
+
+  /* Botón de hamburguesa; Bootstrap ya lo esconde en expand-lg,
+     pero por si quedó visible al redimensionar: */
+  #topNav .navbar-toggler{ display: none !important; }
+}
+
+/* — Opcional: transiciones más suaves al abrir/cerrar en móvil — */
+#offcanvasNav{ transition: transform .22s ease-out, visibility .22s; }
+.offcanvas-backdrop.show{ transition: opacity .22s ease; }
+/* ====== NAV LIMPIO EN ESCRITORIO (>=992px) ====== */
+@media (min-width: 992px){
+
+  /* Navbar totalmente transparente (aunque tenga .bg-white) */
+  #topNav.navbar{
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* El "offcanvas" se convierte en barra normal sin fondo ni límites */
+  #offcanvasNav{
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+    background: transparent !important;
+    width: auto !important;
+    height: auto !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    z-index: auto !important;
+    overflow: visible !important;       /* quita la barra de scroll */
+  }
+
+  /* Ocultar cabecera del panel (título Menú y la X) */
+  #offcanvasNav .offcanvas-header{ display: none !important; }
+
+  /* Cuerpo del panel como contenedor inline de los links */
+  #offcanvasNav .offcanvas-body{
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+    overflow: visible !important;       /* sin barras de scroll internas */
+  }
+
+  /* Sin backdrop en escritorio */
+  .offcanvas-backdrop{ display: none !important; }
+
+  /* Estilo de los enlaces en desktop: un poco más pequeños y compactos */
+  #topNav .navbar-nav{ gap: .25rem .5rem; }
+  #topNav .nav-link{
+    font-size: .98rem;                  /* ↓ tamaño de letra */
+    padding: .45rem .65rem;             /* ↓ padding */
+    border-radius: .5rem;
+  }
+
+  /* Botón hamburguesa fuera en desktop por si queda visible al redimensionar */
+  #topNav .navbar-toggler{ display: none !important; }
+}
+
+/* (Opcional) si quieres aún más pequeño el texto del menú, baja a .94rem */
+/* ===== 0) Nunca scroll horizontal del sitio ===== */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* ===== 1) Layout del navbar en escritorio: que QUEPA sin desbordar ===== */
+@media (min-width: 992px){
+  /* El contenedor del nav no debe recortar ni crear barras */
+  #topNav .container{
+    display: flex; align-items: center;
+    gap: .5rem; min-width: 0; overflow: visible;
+  }
+
+  /* El bloque de links ocupa el espacio disponible y puede "achicarse" */
+  #offcanvasNav .offcanvas-body{
+    display: flex !important; align-items: center !important;
+    padding: 0 !important; min-width: 0; flex: 1 1 auto;
+  }
+
+  /* La lista de links puede encogerse y sin wrap por defecto */
+  #topNav .navbar-nav{
+    display: flex; flex: 1 1 auto; justify-content: flex-end;
+    gap: .25rem .5rem; min-width: 0; flex-wrap: nowrap;
+  }
+
+  /* Cada item puede reducir su ancho si hace falta */
+  #topNav .navbar-nav .nav-item{ flex: 0 1 auto; min-width: 0; }
+
+  /* Logos sin crecer de más */
+  #topNav .navbar-brand{ min-width: 0; }
+  #topNav .navbar-brand img{ height: 32px; width: auto; max-width: 100%; }
+
+  /* Badge Login compacto y sin romper línea */
+  #topNav .badge.bg-success-subtle{
+    font-size: .88rem; padding: .35rem .6rem !important;
+    white-space: nowrap; flex: 0 0 auto;
+  }
+
+  /* Tamaño base un poco menor en desktop */
+  #topNav .nav-link{
+    font-size: .95rem; padding: .42rem .58rem; line-height: 1.2;
+  }
+}
+
+/* ===== 2) Breakpoints intermedios: reduce un poco más para que quepa ===== */
+@media (min-width: 992px) and (max-width: 1199.98px){
+  #topNav .nav-link{
+    font-size: .90rem; padding: .38rem .5rem;
+    letter-spacing: .1px;
+  }
+  #topNav .navbar-nav{ gap: .2rem .4rem; }
+  #topNav .badge.bg-success-subtle{ font-size: .84rem; padding: .32rem .55rem !important; }
+}
+
+/* (Opcional de seguridad) Si AÚN no entra en algunos monitores pequeños,
+   permitimos dos líneas en el menú en desktop pequeño. */
+@media (min-width: 992px) and (max-width: 1100px){
+  #topNav .navbar-nav{ flex-wrap: wrap; row-gap: .25rem; }
+}
+
+/* ===== 3) Nav transparente arriba / sólido al hacer scroll (como dejaste) ===== */
+@media (min-width: 992px){
+  #topNav.navbar{
+    background: transparent !important; border: 0 !important;
+    box-shadow: none !important; backdrop-filter: none !important;
+    transition: background .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  #topNav.navbar.is-solid{
+    background: #fff !important;
+    border-bottom: 1px solid rgba(15,23,42,.08) !important;
+    box-shadow: 0 6px 18px rgba(2,6,23,.06) !important;
+  }
+  /* Colores legibles en ambos estados */
+  #topNav .nav-link{ color: #f8fafc !important; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
+  #topNav.navbar.is-solid .nav-link{ color: #0f172a !important; text-shadow: none; }
+}
+/* ===== NAVBAR con fondo vaguito + transparencia (mobile y desktop) ===== */
+:root{ --nav-h: 64px; }                  /* ajusta si tu barra es más alta */
+@media (max-width: 991.98px){ :root{ --nav-h: 58px; } }
+
+/* Deja espacio para el fixed-top */
+body{ padding-top: var(--nav-h) !important; }
+
+/* Fondo translúcido + blur en TODO el navbar */
+#topNav.navbar{
+  background: rgba(255,255,255,.18) !important;        /* blanco muy suave */
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border-bottom: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,.06) !important;
+}
+
+/* Colores de los links sobre ese fondo claro */
+#topNav .nav-link{
+  color:#0f172a !important;                           /* tinta oscura */
+  font-size:.95rem;                                   /* un poco más pequeño */
+  padding:.42rem .58rem;
+}
+#topNav .nav-link:hover{
+  color:#166534 !important;                           /* verde hoja */
+  background: rgba(22,163,74,.06);
+  border-radius:.5rem;
+}
+
+/* Botón Login acorde al nuevo fondo */
+#topNav .badge.bg-success-subtle{
+  background: rgba(22,163,74,.12) !important;
+  color:#166534 !important;
+  border:1px solid rgba(22,163,74,.25);
+  padding:.36rem .6rem !important;
+  font-size:.9rem;
+  white-space:nowrap;
+}
+
+/* Evita desbordes y barras raras */
+html, body { max-width:100%; overflow-x:hidden; }
+#topNav .container{ overflow:visible !important; }
+#offcanvasNav .offcanvas-body{ overflow:visible !important; }
+
+/* En escritorio, mantenemos el menú en línea (sin panel) */
+@media (min-width: 992px){
+  #offcanvasNav{
+    position:static !important; transform:none !important; visibility:visible !important;
+    width:auto !important; height:auto !important; border:0 !important; box-shadow:none !important;
+    background:transparent !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
+    overflow:visible !important;
+  }
+  #offcanvasNav .offcanvas-header{ display:none !important; }
+  .offcanvas-backdrop{ display:none !important; }
+  #topNav .navbar-nav{ gap:.25rem .5rem; flex-wrap:nowrap; }
+  #topNav .navbar-toggler{ display:none !important; }
+}
+
+/* Modo oscuro del sistema: fondo translúcido pero oscuro */
+@media (prefers-color-scheme: dark){
+  #topNav.navbar{
+    background: rgba(15,23,42,.45) !important;
+    border-bottom: 1px solid rgba(148,163,184,.18) !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,.35) !important;
+  }
+  #topNav .nav-link{ color:#e2e8f0 !important; }
+  #topNav .nav-link:hover{ color:#bbf7d0 !important; background: rgba(34,197,94,.12); }
+}
